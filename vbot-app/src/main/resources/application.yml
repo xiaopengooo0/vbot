@@ -1,0 +1,8 @@
+server:
+  port: 7878
+
+spring:
+  config:
+    name: v-bot
+  profiles:
+    active:  @environment@
