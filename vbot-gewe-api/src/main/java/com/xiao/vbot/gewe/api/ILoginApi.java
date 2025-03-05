@@ -6,6 +6,7 @@ import com.xiao.vbot.gewe.dto.BaseDto;
 import com.xiao.vbot.gewe.dto.login.req.CallbackDto;
 import com.xiao.vbot.gewe.dto.login.res.CheckLoginResponse;
 import com.xiao.vbot.gewe.dto.login.res.QrResponse;
+import org.springframework.stereotype.Component;
 import retrofit2.Call;
 
 import retrofit2.http.Body;
@@ -22,7 +23,7 @@ public interface ILoginApi {
      * 获取token
      * @return
      */
-    @POST("/tools/getTokenId")
+    @POST("tools/getTokenId")
     Call<Response<String>> getToken();
 
 
@@ -31,7 +32,7 @@ public interface ILoginApi {
      * @param callback
      * @return
      */
-    @POST("/tools/setCallback")
+    @POST("tools/setCallback")
     Call<Response> setCallback(@Body CallbackDto callback);
 
     /**
@@ -39,7 +40,7 @@ public interface ILoginApi {
      * @param param
      * @return
      */
-    @POST("/login/getLoginQrCode")
+    @POST("login/getLoginQrCode")
     Call<Response<QrResponse>> getQr(@Body BaseDto param);
 
     /**
@@ -47,15 +48,15 @@ public interface ILoginApi {
      * @param param
      * @return
      */
-    @POST("/login/checkLogin")
-    Call<Response<CheckLoginResponse>> checkQr(@Body BaseDto param);
+    @POST("login/checkLogin")
+    Call<Response<CheckLoginResponse>> checkLogin(@Body BaseDto param);
 
     /**
      * 退出微信
      * @param param
      * @return
      */
-    @POST("/login/logout")
+    @POST("login/logout")
     Call<Response> logOut(@Body BaseDto param);
 
     /**
@@ -63,7 +64,7 @@ public interface ILoginApi {
      * @param param
      * @return
      */
-    @POST("/login/dialogLogin")
+    @POST("login/dialogLogin")
     Call<JSONObject> dialogLogin(@Body BaseDto param);
 
     /**
@@ -71,7 +72,7 @@ public interface ILoginApi {
      * @param param
      * @return
      */
-    @POST("/login/checkOnline")
+    @POST("login/checkOnline")
     Call<Response<Boolean>> checkOnline(@Body BaseDto param);
 
 }

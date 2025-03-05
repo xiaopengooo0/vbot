@@ -1,5 +1,7 @@
 package com.xiao.vbot.config;
 
+import com.xiao.vbot.gewe.api.ILoginApi;
+import com.xiao.vbot.gewe.api.IMessageApi;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -9,6 +11,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
 import javax.annotation.PostConstruct;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: xiaopeng
@@ -44,7 +47,21 @@ public class Retrofit2Config {
     public OkHttpClient okHttpClient(GeweInterceptor geweInterceptor) {
         return new OkHttpClient.Builder()
                 .addInterceptor(geweInterceptor)
+                .connectTimeout(90, TimeUnit.SECONDS)
+                .readTimeout(90, TimeUnit.SECONDS)
+                .writeTimeout(90, TimeUnit.SECONDS)
                 .build();
+    }
+
+
+    @Bean("loginApi")
+    public ILoginApi loginApi(Retrofit retrofit) {
+        return retrofit.create(ILoginApi.class);
+    }
+
+    @Bean("messageApi")
+    public IMessageApi messageApi(Retrofit retrofit) {
+        return retrofit.create(IMessageApi.class);
     }
 
 

@@ -21,4 +21,7 @@ public class GeweApiException extends RuntimeException {
     }
 
 
+    public GeweApiException(Throwable throwable) {
+        super(throwable);
+    }
 }

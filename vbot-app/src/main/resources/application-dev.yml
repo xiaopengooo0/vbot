@@ -1,4 +1,4 @@
 gewe:
   base-url: http://116.198.233.110:2531
-  prefix: /v2/api
+  prefix: /v2/api/
 
