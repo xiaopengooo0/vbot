@@ -9,6 +9,7 @@ import com.xiao.vbot.common.dto.BaseDto;
 import com.xiao.vbot.common.dto.login.req.CallbackDto;
 import com.xiao.vbot.common.dto.login.res.CheckLoginResponse;
 import com.xiao.vbot.common.dto.login.res.QrResponse;
+import com.xiao.vbot.gewe.event.LoginEvent;
 import com.xiao.vbot.service.ILoginService;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class LoginServiceImpl implements ILoginService {
             if (response.isSuccessful()) {
                 Response<QrResponse> body = response.body();
                 if (body != null && body.getRet() == 200) {
-                    eventPublisher.publishEvent(body.getData());
+                    eventPublisher.publishEvent(new LoginEvent(body.getData()));
                 }
                 return body;
             } else {

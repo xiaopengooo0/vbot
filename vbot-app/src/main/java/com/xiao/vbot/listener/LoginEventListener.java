@@ -2,7 +2,7 @@ package com.xiao.vbot.listener;
 
 import com.xiao.vbot.common.dto.login.res.QrResponse;
 import com.xiao.vbot.config.GeweProperty;
-import com.xiao.vbot.event.LoginEvent;
+import com.xiao.vbot.gewe.event.LoginEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -27,6 +27,6 @@ public class LoginEventListener implements ApplicationListener<LoginEvent> {
         QrResponse body = (QrResponse) event.getSource();
         geweProperty.setUuid(body.getUuid());
         geweProperty.setAppId(body.getAppId());
-        logger.debug("获取二维码成功,uuid:{},appid:{}", body.getUuid(), body.getAppId());
+        logger.info("获取二维码成功,uuid:{},appid:{}", body.getUuid(), body.getAppId());
     }
 }

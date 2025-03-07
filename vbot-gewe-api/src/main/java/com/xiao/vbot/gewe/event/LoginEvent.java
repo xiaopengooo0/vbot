@@ -1,4 +1,4 @@
-package com.xiao.vbot.event;
+package com.xiao.vbot.gewe.event;
 
 import org.springframework.context.ApplicationEvent;
 
