@@ -1,4 +1,4 @@
-package com.xiao.vbot.gewe.dto.login.req;
+package com.xiao.vbot.common.dto.login.req;
 
 import lombok.Data;
 

@@ -1,10 +1,10 @@
 package com.xiao.vbot.gewe.api;
 
 import com.xiao.vbot.common.res.Response;
-import com.xiao.vbot.gewe.dto.message.req.PostImageDto;
-import com.xiao.vbot.gewe.dto.message.req.PostTextDto;
-import com.xiao.vbot.gewe.dto.message.res.PostImageResponse;
-import com.xiao.vbot.gewe.dto.message.res.PostTextResponse;
+import com.xiao.vbot.common.dto.message.req.PostImageDto;
+import com.xiao.vbot.common.dto.message.req.PostTextDto;
+import com.xiao.vbot.common.dto.message.res.PostImageResponse;
+import com.xiao.vbot.common.dto.message.res.PostTextResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

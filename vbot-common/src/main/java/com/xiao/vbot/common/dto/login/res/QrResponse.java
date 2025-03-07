@@ -1,6 +1,6 @@
-package com.xiao.vbot.gewe.dto.login.res;
+package com.xiao.vbot.common.dto.login.res;
 
-import com.xiao.vbot.gewe.dto.BaseDto;
+import com.xiao.vbot.common.dto.BaseDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 

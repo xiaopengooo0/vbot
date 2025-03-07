@@ -1,4 +1,4 @@
-package com.xiao.vbot.gewe.dto.message.res;
+package com.xiao.vbot.common.dto.message.res;
 
 import lombok.Data;
 

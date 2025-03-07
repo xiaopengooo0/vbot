@@ -1,6 +1,6 @@
-package com.xiao.vbot.gewe.dto.login.req;
+package com.xiao.vbot.common.dto.login.req;
 
-import com.xiao.vbot.gewe.dto.BaseDto;
+import com.xiao.vbot.common.dto.BaseDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -13,4 +13,5 @@ import lombok.EqualsAndHashCode;
 @Data
 public class CheckLoginDto extends BaseDto {
     private String uuid;
+    private String passTicket;
 }

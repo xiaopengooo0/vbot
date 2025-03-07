@@ -13,6 +13,7 @@
         <module>vbot-gewe-api</module>
         <module>vbot-common</module>
         <module>vbot-web</module>
+        <module>vbot-service</module>
     </modules>
 
 

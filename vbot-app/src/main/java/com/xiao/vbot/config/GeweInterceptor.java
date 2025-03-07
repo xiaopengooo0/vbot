@@ -47,7 +47,9 @@ public class GeweInterceptor implements Interceptor {
 
             ObjectMapper objectMapper = new ObjectMapper();
             Map<String, Object> bodyMap = objectMapper.readValue(bodyString, Map.class);
-            bodyMap.put("appId", geweProperty.getAppId());
+            if (!bodyMap.containsKey("appId")){
+                bodyMap.put("appId", geweProperty.getAppId());
+            }
 
             String newBodyString = objectMapper.writeValueAsString(bodyMap);
             MediaType contentType = originalBody.contentType();

@@ -1,12 +1,11 @@
  package com.xiao.vbot.gewe.api;
 
-import com.alibaba.fastjson2.JSONObject;
+import com.alibaba.fastjson.JSONObject;
 import com.xiao.vbot.common.res.Response;
-import com.xiao.vbot.gewe.dto.BaseDto;
-import com.xiao.vbot.gewe.dto.login.req.CallbackDto;
-import com.xiao.vbot.gewe.dto.login.res.CheckLoginResponse;
-import com.xiao.vbot.gewe.dto.login.res.QrResponse;
-import org.springframework.stereotype.Component;
+import com.xiao.vbot.common.dto.BaseDto;
+import com.xiao.vbot.common.dto.login.req.CallbackDto;
+import com.xiao.vbot.common.dto.login.res.CheckLoginResponse;
+import com.xiao.vbot.common.dto.login.res.QrResponse;
 import retrofit2.Call;
 
 import retrofit2.http.Body;
