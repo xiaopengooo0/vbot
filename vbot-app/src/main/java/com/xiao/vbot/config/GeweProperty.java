@@ -25,5 +25,8 @@ public class GeweProperty {
     private String uuid;
 
 
+    private String wxid;
+
+
     private String tokenUrl = "/tools/getTokenId";
 }

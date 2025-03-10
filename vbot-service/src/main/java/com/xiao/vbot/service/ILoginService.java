@@ -13,7 +13,7 @@ import java.io.IOException;
 
 /**
  * @Author: xiaopeng
- * @Description: TODO
+ * @Description: 用于完成自定义事件封装
  * @DateTime: 2025/3/7 上午11:52 星期五
  **/
 public interface ILoginService {

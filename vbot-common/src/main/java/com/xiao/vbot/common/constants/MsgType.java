@@ -1,13 +1,14 @@
 package com.xiao.vbot.common.constants;
 
-import lombok.Data;
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @Author: xiaopeng
  * @Description: TODO
  * @DateTime: 2025/3/7 下午5:18 星期五
  **/
+
 @Getter
 public enum MsgType {
     TEXT(1,"文本"),
@@ -19,8 +20,9 @@ public enum MsgType {
 
     CARD(42,"名片"),
     FRIEND_ADD(37,"好友请求");
-
+    @Setter
     private int code;
+    @Setter
     private String desc;
 
     MsgType(int i, String desc) {
@@ -28,3 +30,5 @@ public enum MsgType {
         this.desc = desc;
     }
 }
+
+

@@ -1,14 +1,27 @@
 package com.xiao.vbot.common.dto.callback;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.alibaba.fastjson.parser.DefaultJSONParser;
+import com.alibaba.fastjson.parser.ObjectDeserializer;
+import com.alibaba.fastjson.serializer.JSONSerializer;
+import com.alibaba.fastjson.serializer.ObjectSerializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JacksonException;
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.xiao.vbot.common.constants.MsgType;
 import lombok.Data;
 
+import java.io.IOException;
 import java.io.Serializable;
+import java.lang.reflect.Type;
 
 /**
  * @Author: xiaopeng
- * @Description: TODO
+ * @Description: 微信回调消息
  * @DateTime: 2025/3/7 下午5:05 星期五
  **/
 @Data
@@ -53,8 +66,8 @@ class MessageDetail {
     /**
      * 消息类型
      */
-    @JsonProperty("MsgType")
-    private MsgType msgType;
+    @JsonProperty(value = "MsgType")
+    private int msgType;
     /**
      * 消息内容
      */
@@ -74,11 +87,11 @@ class MessageDetail {
      * 图片buf
      *
      * **/
-    @JsonProperty("imgBuf")
+    @JsonProperty("ImgBuf")
     private ImgBuf ImgBuf;
     @JsonProperty("CreateTime")
     private long createTime;
-    @JsonProperty("msgSource")
+    @JsonProperty("MsgSource")
     private String MsgSource;
     /**
      * 推送内容
@@ -88,10 +101,12 @@ class MessageDetail {
     /**
      * 新消息id
      */
-    @JsonProperty("newMsgId")
+    @JsonProperty("NewMsgId")
     private long NewMsgId;
     @JsonProperty("MsgSeq")
     private long msgSeq;
+
+
 
     // Getters and Setters
 }
@@ -105,6 +120,9 @@ class Content {
 }
 @Data
 class ImgBuf {
+    @JsonProperty("iLen")
     private int iLen;
 }
+
+
 

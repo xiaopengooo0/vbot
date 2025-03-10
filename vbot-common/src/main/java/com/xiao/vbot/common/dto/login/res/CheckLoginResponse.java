@@ -14,5 +14,13 @@ public class CheckLoginResponse {
     private String nickName;
     private String expiredTime;
     private String status;
-    private String loginInfo;
+    private LoginInfo loginInfo;
+}
+@Data
+class LoginInfo {
+    private String uin;
+    private String wxid;
+    private String nickName;
+    private String mobile;
+    private String alias;
 }

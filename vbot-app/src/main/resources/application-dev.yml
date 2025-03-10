@@ -2,3 +2,6 @@ gewe:
   base-url: http://116.198.233.110:2531
   prefix: /v2/api/
 
+llm:
+  glm:
+    base-url: https://open.bigmodel.cn/api/paas/v4/chat/completions
