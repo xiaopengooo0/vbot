@@ -4,10 +4,9 @@ import com.xiao.vbot.common.dto.login.req.CheckLoginDto;
 import com.xiao.vbot.common.exception.GeweApiException;
 import com.xiao.vbot.common.res.Response;
 
-import com.xiao.vbot.common.dto.BaseDto;
 import com.xiao.vbot.common.dto.login.res.CheckLoginResponse;
 import com.xiao.vbot.common.dto.login.res.QrResponse;
-import com.xiao.vbot.service.ILoginService;
+import com.xiao.vbot.service.core.ILoginService;
 import org.slf4j.Logger;
 import org.springframework.web.bind.annotation.*;
 

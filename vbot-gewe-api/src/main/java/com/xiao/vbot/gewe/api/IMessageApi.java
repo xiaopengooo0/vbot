@@ -11,7 +11,7 @@ import retrofit2.http.POST;
 
 /**
  * @Author: xiaopeng
- * @Description: 消息接口
+ * @Description: 消息发送接口
  * @DateTime: 2025/3/4 下午4:57 星期二
  **/
 public interface IMessageApi {

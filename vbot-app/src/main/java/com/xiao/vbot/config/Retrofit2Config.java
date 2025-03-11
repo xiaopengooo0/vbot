@@ -2,6 +2,7 @@ package com.xiao.vbot.config;
 
 import com.xiao.vbot.gewe.api.ILoginApi;
 import com.xiao.vbot.gewe.api.IMessageApi;
+import com.xiao.vbot.glm.sdk.service.IGlmApiService;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -28,11 +29,23 @@ public class Retrofit2Config {
     @Value("${gewe.prefix}")
     private String prefix;
 
+    @Value("${llm.glm.base-url}")
+    private String glmBaseUrl;
+
     @Bean
-    public Retrofit retrofit(OkHttpClient client) {
+    public Retrofit geweRetrofit(OkHttpClient geweHttpClient) {
         return new Retrofit.Builder()
                 .baseUrl(baseUrl+prefix)
-                .client(client)
+                .client(geweHttpClient)
+                .addConverterFactory(JacksonConverterFactory.create()).build();
+    }
+
+
+    @Bean
+    public Retrofit glmRetrofit(OkHttpClient glmHttpClient) {
+        return new Retrofit.Builder()
+                .baseUrl(glmBaseUrl)
+                .client(glmHttpClient)
                 .addConverterFactory(JacksonConverterFactory.create()).build();
     }
 
@@ -44,7 +57,7 @@ public class Retrofit2Config {
 
 
     @Bean
-    public OkHttpClient okHttpClient(GeweInterceptor geweInterceptor) {
+    public OkHttpClient geweHttpClient(GeweInterceptor geweInterceptor) {
         return new OkHttpClient.Builder()
                 .addInterceptor(geweInterceptor)
                 .connectTimeout(90, TimeUnit.SECONDS)
@@ -53,16 +66,33 @@ public class Retrofit2Config {
                 .build();
     }
 
+    @Bean
+    public OkHttpClient glmHttpClient(GlmInterceptor glmInterceptor) {
+        return new OkHttpClient.Builder()
+                .addInterceptor(glmInterceptor)
+                .connectTimeout(90, TimeUnit.SECONDS)
+                .readTimeout(90, TimeUnit.SECONDS)
+                .writeTimeout(90, TimeUnit.SECONDS)
+                .build();
+    }
+
 
     @Bean("loginApi")
-    public ILoginApi loginApi(Retrofit retrofit) {
-        return retrofit.create(ILoginApi.class);
+    public ILoginApi loginApi(Retrofit geweRetrofit) {
+        return geweRetrofit.create(ILoginApi.class);
     }
 
     @Bean("messageApi")
-    public IMessageApi messageApi(Retrofit retrofit) {
-        return retrofit.create(IMessageApi.class);
+    public IMessageApi messageApi(Retrofit geweRetrofit) {
+        return geweRetrofit.create(IMessageApi.class);
     }
+
+    @Bean
+    public IGlmApiService glmApiService(Retrofit glmRetrofit) {
+        return glmRetrofit.create(IGlmApiService.class);
+    }
+
+
 
 
 }

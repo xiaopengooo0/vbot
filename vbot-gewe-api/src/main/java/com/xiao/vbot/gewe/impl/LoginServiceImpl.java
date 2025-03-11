@@ -10,7 +10,7 @@ import com.xiao.vbot.common.dto.login.req.CallbackDto;
 import com.xiao.vbot.common.dto.login.res.CheckLoginResponse;
 import com.xiao.vbot.common.dto.login.res.QrResponse;
 import com.xiao.vbot.gewe.event.QrEvent;
-import com.xiao.vbot.service.ILoginService;
+import com.xiao.vbot.service.core.ILoginService;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Service;
 import retrofit2.Call;

@@ -1,4 +1,4 @@
-package com.xiao.vbot.service;
+package com.xiao.vbot.service.core;
 
 import com.alibaba.fastjson.JSONObject;
 
