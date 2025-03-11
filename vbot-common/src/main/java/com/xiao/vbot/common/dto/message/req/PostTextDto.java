@@ -1,5 +1,6 @@
 package com.xiao.vbot.common.dto.message.req;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.xiao.vbot.common.dto.BaseDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -11,6 +12,7 @@ import lombok.EqualsAndHashCode;
  **/
 @EqualsAndHashCode(callSuper = true)
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class PostTextDto extends BaseDto {
     /**
      * 接收消息的微信号

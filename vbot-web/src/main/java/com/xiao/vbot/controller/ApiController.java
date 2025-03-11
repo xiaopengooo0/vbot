@@ -23,8 +23,8 @@ public class ApiController {
     @PostMapping("/callback")
     public void callback(@RequestBody WeChatMessage message, HttpServletRequest request) {
         try {
-            String body = request.getReader().readLine();
-            logger.info("请求body{}", body);
+//            String body = request.getReader().readLine();
+//            logger.info("请求body{}", body);
             messageProcessor.processMessage(message);
         } catch (Exception e) {
             logger.error("读取request异常", e);

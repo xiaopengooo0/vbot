@@ -56,7 +56,8 @@ public class GeweInterceptor implements Interceptor {
             RequestBody newBody = RequestBody.create(contentType, newBodyString);
 
             Request requestWithHeader = originalRequest.newBuilder()
-                    .header("X-GEWE-TOKEN", geweProperty.getToken())
+                    .addHeader("X-GEWE-TOKEN", geweProperty.getToken())
+                    .addHeader("Content-Type", "application/json")
                     .post(newBody)
                     .build();
 
@@ -65,7 +66,7 @@ public class GeweInterceptor implements Interceptor {
 
         // 对于非 JSON 请求体或非 POST 请求，直接添加头部
         Request requestWithHeader = originalRequest.newBuilder()
-                .header("X-GEWE-TOKEN", geweProperty.getToken())
+                .addHeader("X-GEWE-TOKEN", geweProperty.getToken())
                 .build();
 
         return chain.proceed(requestWithHeader);

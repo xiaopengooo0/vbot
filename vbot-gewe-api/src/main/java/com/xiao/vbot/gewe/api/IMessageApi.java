@@ -21,7 +21,7 @@ public interface IMessageApi {
      * @param messageDto
      * @return
      */
-    @POST("/message/postText")
+    @POST("message/postText")
     Call<Response<PostTextResponse>> postText(@Body PostTextDto messageDto);
 
 
@@ -30,6 +30,6 @@ public interface IMessageApi {
      * @param messageDto
      * @return
      */
-    @POST("/message/postImage")
+    @POST("message/postImage")
     Call<Response<PostImageResponse>> postImage(@Body PostImageDto messageDto);
 }
