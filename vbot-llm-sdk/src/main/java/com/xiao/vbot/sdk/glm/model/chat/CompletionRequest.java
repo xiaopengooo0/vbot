@@ -1,4 +1,4 @@
-package com.xiao.vbot.glm.sdk.model.chat;
+package com.xiao.vbot.sdk.glm.model.chat;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;

@@ -14,7 +14,7 @@
         <module>vbot-common</module>
         <module>vbot-web</module>
         <module>vbot-service</module>
-        <module>vbot-glm-sdk</module>
+        <module>vbot-llm-sdk</module>
     </modules>
 
 

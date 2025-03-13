@@ -1,7 +1,6 @@
-package com.xiao.vbot.glm.sdk.model.image;
+package com.xiao.vbot.sdk.glm.model.image;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.xiao.vbot.glm.sdk.model.chat.Model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

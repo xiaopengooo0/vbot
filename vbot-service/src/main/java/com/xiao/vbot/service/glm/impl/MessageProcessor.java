@@ -7,7 +7,7 @@ import com.xiao.vbot.common.dto.callback.WeChatMessage;
 import com.xiao.vbot.common.dto.message.req.PostTextDto;
 import com.xiao.vbot.common.dto.message.res.PostTextResponse;
 import com.xiao.vbot.common.res.Response;
-import com.xiao.vbot.glm.sdk.model.chat.Model;
+import com.xiao.vbot.sdk.glm.model.chat.Model;
 import com.xiao.vbot.service.core.IMessageService;
 import com.xiao.vbot.service.glm.IModelService;
 import com.xiao.vbot.service.glm.ModelServiceFactory;
@@ -50,7 +50,7 @@ public class MessageProcessor {
             logger.info("微信消息发送内容: {}",JSONObject.toJSONString(postTextDto));
 
             Response<PostTextResponse> responseResponse = messageService.postText(postTextDto);
-            if (responseResponse.getRet() == 0) {
+            if (responseResponse.getRet() == 200) {
                 logger.info("微信消息发送成功");
             } else {
                 logger.error("微信消息发送失败: {}", responseResponse.getMsg());
@@ -68,8 +68,24 @@ public class MessageProcessor {
         int msgType = data.getMsgType();
         String targetUser = data.getToUserName().getString();
         String content = data.getContent().getString();
+        String fromUser = data.getFromUserName().getString();
         // 根据消息内容确定模型名称,默认返回GLM_4_FLASH
 
-        return Model.GLM_4_FLASH.getName(); // 示例
+        if (fromUser.equals("wxid_l3ldj618ql3b22")){
+            return null;
+        }
+
+
+        //群聊信息
+        if(fromUser.endsWith("@chatroom")&&content.contains("@小郭")){
+            return Model.GLM_4_FLASH.getName();
+        }
+
+        if (!fromUser.endsWith("@chatroom")) {
+            return Model.GLM_4_FLASH.getName();
+        }
+
+
+        return null; // 示例
     }
 }

@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>vbot-glm-sdk</artifactId>
+    <artifactId>vbot-llm-sdk</artifactId>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>

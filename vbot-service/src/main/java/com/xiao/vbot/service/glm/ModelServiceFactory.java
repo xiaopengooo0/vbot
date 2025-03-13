@@ -1,6 +1,6 @@
 package com.xiao.vbot.service.glm;
 
-import com.xiao.vbot.glm.sdk.model.chat.Model;
+import com.xiao.vbot.sdk.glm.model.chat.Model;
 import com.xiao.vbot.service.glm.impl.IGlm4ModelService;
 import com.xiao.vbot.service.glm.impl.IGlm4VModelService;
 import com.xiao.vbot.service.glm.impl.IGlmCogviewModelService;

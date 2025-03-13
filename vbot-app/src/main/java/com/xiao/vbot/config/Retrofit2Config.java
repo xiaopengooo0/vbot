@@ -2,7 +2,7 @@ package com.xiao.vbot.config;
 
 import com.xiao.vbot.gewe.api.ILoginApi;
 import com.xiao.vbot.gewe.api.IMessageApi;
-import com.xiao.vbot.glm.sdk.service.IGlmApiService;
+import com.xiao.vbot.sdk.glm.service.IGlmApiService;
 import okhttp3.OkHttpClient;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 
-import javax.annotation.PostConstruct;
 import java.util.concurrent.TimeUnit;
 
 /**

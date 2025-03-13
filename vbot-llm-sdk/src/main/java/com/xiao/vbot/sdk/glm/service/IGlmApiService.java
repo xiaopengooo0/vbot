@@ -1,9 +1,8 @@
-package com.xiao.vbot.glm.sdk.service;
+package com.xiao.vbot.sdk.glm.service;
 
 import com.alibaba.fastjson.JSONObject;
-import com.xiao.vbot.glm.sdk.model.chat.CompletionRequest;
-import com.xiao.vbot.glm.sdk.model.chat.CompletionResponse;
-import com.xiao.vbot.glm.sdk.model.image.GlmCogview3Request;
+import com.xiao.vbot.sdk.glm.model.chat.CompletionRequest;
+import com.xiao.vbot.sdk.glm.model.image.GlmCogview3Request;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.POST;

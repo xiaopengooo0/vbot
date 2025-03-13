@@ -1,4 +1,4 @@
-package com.xiao.vbot.glm.sdk.model.image;
+package com.xiao.vbot.sdk.glm.model.image;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
