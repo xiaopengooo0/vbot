@@ -2,6 +2,7 @@ package com.xiao.vbot.sdk.glm.service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.xiao.vbot.sdk.glm.model.chat.CompletionRequest;
+import com.xiao.vbot.sdk.glm.model.chat.CompletionResponse;
 import com.xiao.vbot.sdk.glm.model.image.GlmCogview3Request;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -29,6 +30,6 @@ public interface IGlmApiService {
      * @return
      */
     @POST("chat/completions")
-    Call<JSONObject> completion(@Body CompletionRequest completionRequest);
+    Call<CompletionResponse> completion(@Body CompletionRequest completionRequest);
 
 }

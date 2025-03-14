@@ -4,10 +4,12 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xiao.vbot.common.dto.callback.MessageDetail;
 import com.xiao.vbot.common.dto.callback.WeChatMessage;
+import com.xiao.vbot.common.dto.message.MessageDto;
 import com.xiao.vbot.common.dto.message.req.PostTextDto;
 import com.xiao.vbot.common.dto.message.res.PostTextResponse;
 import com.xiao.vbot.common.res.Response;
 import com.xiao.vbot.sdk.glm.model.chat.Model;
+import com.xiao.vbot.service.core.IMessageRepository;
 import com.xiao.vbot.service.core.IMessageService;
 import com.xiao.vbot.service.glm.IModelService;
 import com.xiao.vbot.service.glm.ModelServiceFactory;
@@ -24,11 +26,14 @@ public class MessageProcessor {
 
     private static final Logger logger = LoggerFactory.getLogger(MessageProcessor.class);
 
+
+    @Resource
+    private IMessageRepository messageRepository;
+
     @Resource
     private ModelServiceFactory modelServiceFactory;
 
-    @Resource
-    private IMessageService messageService;
+
 
     public void processMessage(WeChatMessage message) throws IOException {
         String modelName = determineModelName(message); // 根据消息内容确定模型名称
@@ -37,28 +42,12 @@ public class MessageProcessor {
         if (modelService != null) {
             JSONObject response = modelService.processMessage(message);
 
-            JSONArray choices = response.getJSONArray("choices");
-            JSONObject choice = choices.getJSONObject(0);
-            JSONObject jsonObject = choice.getJSONObject("message");
-            String content = jsonObject.getString("content");
-
-            PostTextDto postTextDto = new PostTextDto();
-            postTextDto.setAppId(message.getAppid());
-            postTextDto.setToWxid(message.getData().getFromUserName().getString());
-            postTextDto.setContent(content);
-            // 打印日志
-            logger.info("微信消息发送内容: {}",JSONObject.toJSONString(postTextDto));
-
-            Response<PostTextResponse> responseResponse = messageService.postText(postTextDto);
-            if (responseResponse.getRet() == 200) {
-                logger.info("微信消息发送成功");
-            } else {
-                logger.error("微信消息发送失败: {}", responseResponse.getMsg());
-            }
-
         } else {
             // 处理未知模型的情况
             logger.error("未查到相关引用Model服务: {}", modelName);
+            MessageDto messageDto = new MessageDto();
+            messageDto.setMessage(message);
+            messageRepository.save(messageDto);
         }
     }
 
