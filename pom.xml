@@ -93,6 +93,11 @@
                 <version>${jwt.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>com.coze</groupId>
+                <artifactId>coze-api</artifactId>
+                <version>0.2.8</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

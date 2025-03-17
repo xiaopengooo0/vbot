@@ -1,5 +1,9 @@
 package com.xiao.vbot;
 
+import com.coze.openapi.client.common.pagination.PageResp;
+import com.coze.openapi.client.workspace.ListWorkspaceReq;
+import com.coze.openapi.client.workspace.model.Workspace;
+import com.coze.openapi.service.service.CozeAPI;
 import com.mongoplus.conditions.query.LambdaQueryChainWrapper;
 import com.mongoplus.mapper.BaseMapper;
 import com.mongoplus.mapping.TypeReference;
@@ -20,6 +24,9 @@ import javax.sql.DataSource;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
 
@@ -37,6 +44,10 @@ public class ApiTest {
 
     @Resource
     private BaseMapper baseMapper;
+
+
+    @Resource
+    private CozeAPI cozeApi;
 
     @Test
     public void glmTest() throws IOException {
@@ -64,12 +75,44 @@ public class ApiTest {
 
     @Test
     public void messagesTest() {
-        LocalDateTime fiveMinutesAgo = LocalDateTime.now().minusMinutes(5);
-        List<Message> list = new LambdaQueryChainWrapper<>(baseMapper, Message.class)
-                .gte((message -> message.getData().getCreateTime()), fiveMinutesAgo)
-                .list();
-        for (Message message : list) {
+        LocalDateTime day = LocalDateTime.now().minusDays(5);
+//        List<Message> list = new LambdaQueryChainWrapper<>(baseMapper, Message.class)
+//                .eq(message -> message.getData().getCreateTime(), fiveMinutesAgo)
+//                .list();
+//        for (Message message : list) {
+//            System.out.println(message);
+//        }
+
+        List<Message> messages = baseMapper.queryCommand("{'Data.CreateTime': {$gte: '"+day+"'}}", Message.class);
+        for (Message message : messages) {
             System.out.println(message);
+        }
+    }
+
+
+
+
+
+    @Test
+    public void mongoTest() {
+
+        String time = "1741942448";
+        LocalDateTime localDateTime = LocalDateTime.ofEpochSecond(Long.parseLong(time), 0, ZoneOffset.UTC);
+        System.out.println("UTC 时间: " + localDateTime);
+
+        // 如果需要转换为本地时区时间，可以进一步处理
+        ZonedDateTime zonedDateTime = localDateTime.atZone(ZoneOffset.UTC).withZoneSameInstant(ZoneId.systemDefault());
+        System.out.println("本地时区时间: " + zonedDateTime.toLocalDateTime());
+
+    }
+
+
+
+    @Test
+    public void cozeApi01() {
+        PageResp<Workspace> list = cozeApi.workspaces().list(new ListWorkspaceReq());
+        for (Workspace workspace : list.getItems()) {
+            System.out.println(workspace);
         }
     }
 }

@@ -40,11 +40,10 @@ public class MessageProcessor {
         logger.info("确定模型名称: {}", JSONObject.toJSONString(message));
         IModelService modelService = modelServiceFactory.getModelService(modelName);
         if (modelService != null) {
-            JSONObject response = modelService.processMessage(message);
-
+            modelService.processMessage(message);
         } else {
             // 处理未知模型的情况
-            logger.error("未查到相关引用Model服务: {}", modelName);
+            logger.error("未查到相关引用Model服务或不需回复: {}", modelName);
             MessageDto messageDto = new MessageDto();
             messageDto.setMessage(message);
             messageRepository.save(messageDto);
@@ -59,22 +58,19 @@ public class MessageProcessor {
         String content = data.getContent().getString();
         String fromUser = data.getFromUserName().getString();
         // 根据消息内容确定模型名称,默认返回GLM_4_FLASH
-
         if (fromUser.equals("wxid_l3ldj618ql3b22")){
             return null;
         }
-
-
         //群聊信息
-        if(fromUser.endsWith("@chatroom")&&content.contains("@小郭")){
-            return Model.GLM_4_FLASH.getName();
-        }
+//        if(fromUser.endsWith("@chatroom")&&content.contains("@小郭")){
+//            return Model.GLM_4_FLASH.getName();
+//        }
+//
+//        if (!fromUser.endsWith("@chatroom")) {
+//            return Model.GLM_4_FLASH.getName();
+//        }
 
-        if (!fromUser.endsWith("@chatroom")) {
-            return Model.GLM_4_FLASH.getName();
-        }
 
-
-        return null; // 示例
+        return Model.GLM_4_FLASH.getName(); // 示例
     }
 }

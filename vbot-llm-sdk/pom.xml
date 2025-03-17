@@ -46,6 +46,10 @@
             <groupId>com.alibaba</groupId>
             <artifactId>fastjson</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.coze</groupId>
+            <artifactId>coze-api</artifactId>
+        </dependency>
 
     </dependencies>
 

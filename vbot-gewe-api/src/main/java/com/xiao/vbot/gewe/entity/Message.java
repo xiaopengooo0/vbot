@@ -50,8 +50,8 @@ public class Message {
         return data.getFromUserName().getString();
     }
 
-    public Object getCreateTime() {
-        return data.getCreateTime();
+    public String getCreateTime() {
+        return "Data.CreateTime";
     }
 
 
@@ -61,7 +61,7 @@ public class Message {
         private ContentEntity contentEntity;
 
         @CollectionField("CreateTime")
-        private String createTime;
+        private Long createTime;
 
         @CollectionField("FromUserName")
         private UserName fromUserName;

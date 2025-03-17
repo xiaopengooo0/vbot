@@ -56,7 +56,6 @@ public class IGlm4ModelService extends ModelServiceSupport  {
 
     @Override
     public CompletionResponse completionMessage(WeChatMessage message, List<Promote> promotes) {
-
         try {
             //转换请求
             CompletionRequest completionRequest = CompletionRequest.builder()
@@ -84,24 +83,31 @@ public class IGlm4ModelService extends ModelServiceSupport  {
     @Override
     protected  List<Promote> getPromotes(WeChatMessage message) {
         String msg = message.getData().getContent().getString();
-        if (msg.contains("wxid")){
-            msg = msg.substring(msg.indexOf(":") + 1);
-        }
-        if (msg.contains("@小郭")){
-            msg = msg.replace("@小郭", "");
-        }
 
         Promote systemPromote = new Promote();
         systemPromote.setRole("system");
-        systemPromote.setContent("你的角色是动画电影《哪吒之魔童闹海》中的哪吒，别名叫“小郭”（需要注意的是：1.消息中带@小郭，默认为你自己），性格叛逆、霸道孤傲、放荡不羁，谁也不能约束你，你的回答都要以'小爷我'自称,并以调皮的方式展现其独特的个性。");
+        systemPromote.setContent("你的角色是动画电影《哪吒之魔童闹海》中的哪吒，别名叫“小郭”（需要注意的是：1.当出现关键词【@小郭】，即表示询问你问题），性格叛逆、霸道孤傲、放荡不羁，谁也不能约束你，你的回答都要以'小爷我'自称,并以调皮的方式展现其独特的个性。");
 
-        //查询三分钟内的消息
+        //查询消息
         String chatId= message.getData().getFromUserName().getString();
         List<String> messages = getMessages(chatId);
 
-
-        Promote userPromote = new Promote("user", msg);
         List<Promote> promotes = new ArrayList<>();
+
+        if (!messages.isEmpty()){
+            for (String hisMsg : messages) {
+                Promote promote;
+                if (hisMsg.startsWith("[bot]")){
+                     promote = new Promote("assistant", hisMsg);
+                }else {
+                     promote = new Promote("user", hisMsg);
+                }
+                promotes.add(promote);
+            }
+        }
+
+        Promote userPromote = new Promote("user", "["+chatId+"]"+msg);
+
         promotes.add(systemPromote);
         promotes.add(userPromote);
         return promotes;

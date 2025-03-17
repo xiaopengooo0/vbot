@@ -17,3 +17,8 @@ mongo-plus:
       password: wechat    #密码，同上（若密码中出现@,!等等符号，不需要再进行转码！！！）
       authenticationDatabase: wechat     #验证数据库
       connectTimeoutMS: 50000   #在超时之前等待连接打开的最长时间（以毫秒为单位）
+
+coze:
+  token: pat_TIPbMlYnyAbZC4UGp869rrZroA7QmBkdz6ksLJQkSAZ0Ly9S5rPRleioNPYMSqNA
+
+

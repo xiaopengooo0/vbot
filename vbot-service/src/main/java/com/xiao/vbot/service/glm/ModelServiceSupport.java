@@ -15,7 +15,7 @@ import java.util.List;
 
 /**
  * @Author: xiaopeng
- * @Description: TODO
+ * @Description: 服务编排
  * @DateTime: 2025/3/14 下午2:05 星期五
  **/
 public abstract class ModelServiceSupport implements IModelService{
@@ -31,7 +31,7 @@ public abstract class ModelServiceSupport implements IModelService{
 
 
     @Override
-    public JSONObject processMessage(WeChatMessage message) throws IOException {
+    public void processMessage(WeChatMessage message) throws IOException {
 
         // 处理消息前
 //        获取提示词,上下文信息
@@ -50,7 +50,7 @@ public abstract class ModelServiceSupport implements IModelService{
         // 处理消息后，组装请求和响应信息
         messageRepository.save(messageDto);
 
-        return JSONObject.parseObject(JSONObject.toJSONString(messageDto));
+        JSONObject.parseObject(JSONObject.toJSONString(messageDto));
     }
 
     protected abstract ReplyDto sendBotMessage(CompletionResponse completionResponse, WeChatMessage message) throws IOException;
