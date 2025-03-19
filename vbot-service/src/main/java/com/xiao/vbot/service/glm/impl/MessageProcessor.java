@@ -43,7 +43,7 @@ public class MessageProcessor {
             modelService.processMessage(message);
         } else {
             // 处理未知模型的情况
-            logger.error("未查到相关引用Model服务或不需回复: {}", modelName);
+            logger.error("未查到相关引用Model服务或不需回复");
             MessageDto messageDto = new MessageDto();
             messageDto.setMessage(message);
             messageRepository.save(messageDto);
