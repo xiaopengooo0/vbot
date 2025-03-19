@@ -1,16 +1,11 @@
 package com.xiao.vbot.service.glm.impl;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.xiao.vbot.common.dto.callback.MessageDetail;
 import com.xiao.vbot.common.dto.callback.WeChatMessage;
 import com.xiao.vbot.common.dto.message.MessageDto;
-import com.xiao.vbot.common.dto.message.req.PostTextDto;
-import com.xiao.vbot.common.dto.message.res.PostTextResponse;
-import com.xiao.vbot.common.res.Response;
 import com.xiao.vbot.sdk.glm.model.chat.Model;
 import com.xiao.vbot.service.core.IMessageRepository;
-import com.xiao.vbot.service.core.IMessageService;
 import com.xiao.vbot.service.glm.IModelService;
 import com.xiao.vbot.service.glm.ModelServiceFactory;
 import org.slf4j.Logger;

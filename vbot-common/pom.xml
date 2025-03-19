@@ -8,8 +8,8 @@
         <artifactId>V-Bot</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
     <artifactId>vbot-common</artifactId>
+    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -32,7 +32,6 @@
         <dependency>
             <groupId>com.squareup.okhttp3</groupId>
             <artifactId>okhttp</artifactId>
-            <version>4.9.3</version> <!-- 请根据需要选择合适的版本 -->
         </dependency>
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -64,5 +63,7 @@
 
 
     </dependencies>
+
+
 
 </project>
