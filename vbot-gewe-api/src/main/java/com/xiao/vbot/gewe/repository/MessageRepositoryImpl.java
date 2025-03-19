@@ -89,7 +89,7 @@ public class MessageRepositoryImpl extends MongoMapperImpl<Message> implements M
     @Override
     public List<String> getMessages(String fromUserName) {
         //返回最近二十条信息 content消息+reply消息
-        List<Message> messages = baseMapper.queryCommand("{'Data.FromUserName':$eq{'" + fromUserName + "'}}.sort({'Data.CreateTime': -1}).limit(20)", Message.class);
+        List<Message> messages = baseMapper.queryCommand("{'Data.FromUserName':{$eq:'" + fromUserName + "'}}.sort({'Data.CreateTime': -1}).limit(20)", Message.class);
         List<Message> list = messages.stream().filter(message -> message.getReply() != null).toList();
         if (list.isEmpty()){
             return List.of();

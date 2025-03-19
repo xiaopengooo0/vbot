@@ -62,9 +62,9 @@ public class MessageProcessor {
             return null;
         }
         //群聊信息
-//        if(fromUser.endsWith("@chatroom")&&content.contains("@小郭")){
-//            return Model.GLM_4_FLASH.getName();
-//        }
+        if(fromUser.endsWith("@chatroom")&&!content.contains("@小郭")){
+            return null;
+        }
 //
 //        if (!fromUser.endsWith("@chatroom")) {
 //            return Model.GLM_4_FLASH.getName();
