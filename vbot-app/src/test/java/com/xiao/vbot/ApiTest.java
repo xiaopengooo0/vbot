@@ -12,6 +12,7 @@ import com.xiao.vbot.common.dto.callback.MessageDetail;
 import com.xiao.vbot.common.dto.callback.UserName;
 import com.xiao.vbot.common.dto.callback.WeChatMessage;
 import com.xiao.vbot.gewe.entity.Message;
+import com.xiao.vbot.service.coze.CozeApiServiceImpl;
 import com.xiao.vbot.service.glm.impl.IGlm4ModelService;
 import org.bson.Document;
 import org.junit.Test;
@@ -29,6 +30,8 @@ import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @Author: xiaopeng
@@ -48,6 +51,10 @@ public class ApiTest {
 
     @Resource
     private CozeAPI cozeApi;
+
+
+    @Resource
+    private CozeApiServiceImpl cozeApiService;
 
     @Test
     public void glmTest() throws IOException {
@@ -115,4 +122,25 @@ public class ApiTest {
             System.out.println(workspace);
         }
     }
+
+
+    @Test
+    public void cozeApi02() {
+//        String message = "你好";
+//        String voice = cozeApiService.getVoice(message);
+//        System.out.println(voice);
+        String input = "已成功使用指定音色“zh_male_sunwukong_mars_bigtts”将文本“你好”合成为音频，音频链接为：[https://lf-bot-studio-plugin-resource.coze.cn/obj/bot-studio-plugin-plugin-tos/artist/image/f148e7cf008d4368ae3aa517cb77dc67.mp3](https://lf-bot-studio-plugin-resource.coze.cn/obj/bot-studio-plugin-plugin-tos/artist/image/f148e7cf008d4368ae3aa517cb77dc67.mp3)。你可以点击链接播放音频。";
+        String urlPattern = "\\[(https?://[^]]+)]";
+        Pattern pattern = Pattern.compile(urlPattern);
+        Matcher matcher = pattern.matcher(input);
+
+        if (matcher.find()) {
+            String url = matcher.group(1);
+            System.out.println("提取的URL: " + url);
+        } else {
+            System.out.println("未找到URL");
+        }
+
+    }
+
 }

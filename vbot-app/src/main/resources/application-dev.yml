@@ -1,24 +1,25 @@
 gewe:
-  base-url: http://116.198.233.110:2531
+  #gewe 接口地址
+  base-url: #########################
   prefix: /v2/api/
 # llm
 llm:
   glm:
-    token: 33ba0ccafc6527f76f9798f71ed2f488.cDIXhvPrfxn75dy8
+    token: ##########################
     base-url: https://open.bigmodel.cn/api/paas/v4/
 # mongo-plus
 mongo-plus:
   data:
     mongodb:
-      host: 116.198.233.110   #ip
+      host: #####   #ip
       port: 27017   #端口
-      database: wechat    #数据库名
-      username: wechat    #用户名，没有可不填（若账号中出现@,!等等符号，不需要再进行转码！！！）
-      password: wechat    #密码，同上（若密码中出现@,!等等符号，不需要再进行转码！！！）
+      database: database    #数据库名
+      username: username    #用户名，没有可不填（若账号中出现@,!等等符号，不需要再进行转码！！！）
+      password: password    #密码，同上（若密码中出现@,!等等符号，不需要再进行转码！！！）
       authenticationDatabase: wechat     #验证数据库
       connectTimeoutMS: 50000   #在超时之前等待连接打开的最长时间（以毫秒为单位）
 
 coze:
-  token: pat_TIPbMlYnyAbZC4UGp869rrZroA7QmBkdz6ksLJQkSAZ0Ly9S5rPRleioNPYMSqNA
+  token: ###########
 
 
