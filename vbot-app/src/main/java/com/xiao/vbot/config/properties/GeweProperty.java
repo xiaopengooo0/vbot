@@ -1,4 +1,4 @@
-package com.xiao.vbot.config;
+package com.xiao.vbot.config.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

@@ -1,5 +1,6 @@
 package com.xiao.vbot.config;
 
+import com.xiao.vbot.config.properties.GeweProperty;
 import com.xiao.vbot.gewe.api.ILoginApi;
 import com.xiao.vbot.gewe.api.IMessageApi;
 import com.xiao.vbot.sdk.glm.service.IGlmApiService;
@@ -69,6 +70,15 @@ public class Retrofit2Config {
     public OkHttpClient glmHttpClient(GlmInterceptor glmInterceptor) {
         return new OkHttpClient.Builder()
                 .addInterceptor(glmInterceptor)
+                .connectTimeout(90, TimeUnit.SECONDS)
+                .readTimeout(90, TimeUnit.SECONDS)
+                .writeTimeout(90, TimeUnit.SECONDS)
+                .build();
+    }
+
+    @Bean
+    public OkHttpClient okHttpClient(){
+        return new OkHttpClient.Builder()
                 .connectTimeout(90, TimeUnit.SECONDS)
                 .readTimeout(90, TimeUnit.SECONDS)
                 .writeTimeout(90, TimeUnit.SECONDS)

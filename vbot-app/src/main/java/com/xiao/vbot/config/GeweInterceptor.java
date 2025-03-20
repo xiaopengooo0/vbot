@@ -1,6 +1,7 @@
 package com.xiao.vbot.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.xiao.vbot.config.properties.GeweProperty;
 import okhttp3.Interceptor;
 import okhttp3.Request;
 import okhttp3.RequestBody;

@@ -1,7 +1,7 @@
 package com.xiao.vbot.listener;
 
 import com.xiao.vbot.common.dto.login.res.QrResponse;
-import com.xiao.vbot.config.GeweProperty;
+import com.xiao.vbot.config.properties.GeweProperty;
 import com.xiao.vbot.gewe.event.QrEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

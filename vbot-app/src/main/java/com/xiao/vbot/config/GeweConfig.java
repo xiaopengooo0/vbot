@@ -3,6 +3,7 @@ package com.xiao.vbot.config;
 
 import com.xiao.vbot.common.res.Response;
 import com.xiao.vbot.common.exception.GeweApiException;
+import com.xiao.vbot.config.properties.GeweProperty;
 import com.xiao.vbot.gewe.api.ILoginApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

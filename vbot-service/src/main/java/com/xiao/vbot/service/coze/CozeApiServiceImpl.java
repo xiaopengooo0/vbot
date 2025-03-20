@@ -25,7 +25,7 @@ public class CozeApiServiceImpl {
     @Resource
     private CozeAPI cozeAPI;
 
-    @Resource
+    @Resource(name = "okHttpClient")
     private OkHttpClient client;
 
     private static final String VOICE_WORKFLOW_ID ="7481172534386524187";

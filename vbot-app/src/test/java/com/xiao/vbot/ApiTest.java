@@ -13,6 +13,7 @@ import com.xiao.vbot.common.dto.callback.UserName;
 import com.xiao.vbot.common.dto.callback.WeChatMessage;
 import com.xiao.vbot.gewe.entity.Message;
 import com.xiao.vbot.service.coze.CozeApiServiceImpl;
+import com.xiao.vbot.service.file.IFileService;
 import com.xiao.vbot.service.glm.impl.IGlm4ModelService;
 import org.bson.Document;
 import org.junit.Test;
@@ -51,6 +52,9 @@ public class ApiTest {
 
     @Resource
     private CozeAPI cozeApi;
+
+    @Resource(name = "qiniuFileServiceImpl")
+    private IFileService fileService;
 
 
     @Resource
@@ -141,6 +145,18 @@ public class ApiTest {
             System.out.println("未找到URL");
         }
 
+    }
+
+
+    @Test
+    public void qiniuApi03() {
+        fileService.uploadFile("C:\\Users\\xiaopeng\\Pictures\\R-C.jpg");
+    }
+
+    @Test
+    public void qiniuApi04() throws Exception {
+        String key = "FpHNvGBPmbVvDpdJK6cApkrn-vmw";
+        fileService.downloadFile(key, "C:\\Users\\xiaopeng\\Downloads\\R-C.jpg");
     }
 
 }

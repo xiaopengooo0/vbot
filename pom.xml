@@ -35,6 +35,8 @@
         <commons.lang3.version>3.12.0</commons.lang3.version>
         <guava.version>32.1.2-jre</guava.version>
         <jwt.version>4.2.2</jwt.version>
+        <coze.version>0.2.8</coze.version>
+        <qiqiu.version>7.18.0</qiqiu.version>
     </properties>
 
 
@@ -96,8 +98,15 @@
             <dependency>
                 <groupId>com.coze</groupId>
                 <artifactId>coze-api</artifactId>
-                <version>0.2.8</version>
+                <version>${coze.version}</version>
             </dependency>
+
+            <dependency>
+                <groupId>com.qiniu</groupId>
+                <artifactId>qiniu-java-sdk</artifactId>
+                <version>${qiqiu.version}</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

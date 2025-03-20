@@ -11,11 +11,21 @@ public interface IFileService {
      * @param url
      * @param fileName
      */
-    void downloadFile(String url, String fileName);
+    void downloadFile(String url, String fileName) throws Exception;
 
 
     /**
      * mp3转.slik
      */
     void mp3ToSlik(String mp3Path, String slikPath);
+
+    /**
+     * mp3转.slik
+     */
+    void mp3ToSlik(String mp3Path, String slikPath, String slikName);
+
+    /**
+     * 上传文件到云存储
+     */
+    void uploadFile(String filePath);
 }
